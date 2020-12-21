@@ -1,9 +1,20 @@
 import ThenPromise from 'promise';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    //will run on every render and rerender cycle, like componentDidUpdate hook
+    //we can have many useEffect hooks
+    //passing [] empty will make useEffect run only once
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect called');
+        setTimeout(() => {
+            alert('[Cockpit.js] saved data to cloud');
+        }, 1000)
+    }, []);
+
     const assignClasses = [];
     let btnClass = '';
     if (props.showPersons) {
