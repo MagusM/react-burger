@@ -1,4 +1,3 @@
-import ThenPromise from 'promise';
 import React, { useEffect } from 'react';
 
 import classes from './Cockpit.css';
@@ -12,18 +11,31 @@ const cockpit = (props) => {
         console.log('[Cockpit.js] useEffect called');
         setTimeout(() => {
             alert('[Cockpit.js] saved data to cloud');
-        }, 1000)
+        }, 500);
+
+        //this return function is like componentWillUnmount hook, runs after the render cycle.
+        return () => {
+            console.log('[Cockpit.js] cleanup effect called');
+        }
     }, []);
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect called');
+
+        return () => {
+            console.log('[Cockpit.js] cleanup in 2nd effect called');
+        }
+    });
 
     const assignClasses = [];
     let btnClass = '';
     if (props.showPersons) {
         btnClass = classes.Red;
     }
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
       assignClasses.push(classes.red);
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
       assignClasses.push(classes.bold);
     }
 
@@ -40,4 +52,5 @@ const cockpit = (props) => {
     );
 };
 
-export default cockpit;
+//React.memo is optimization for functional components
+export default React.memo(cockpit);
