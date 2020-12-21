@@ -9,9 +9,9 @@ const cockpit = (props) => {
     //passing [] empty will make useEffect run only once
     useEffect(() => {
         console.log('[Cockpit.js] useEffect called');
-        setTimeout(() => {
-            alert('[Cockpit.js] saved data to cloud');
-        }, 500);
+        // setTimeout(() => {
+        //     alert('[Cockpit.js] saved data to cloud');
+        // }, 500);
 
         //this return function is like componentWillUnmount hook, runs after the render cycle.
         return () => {
