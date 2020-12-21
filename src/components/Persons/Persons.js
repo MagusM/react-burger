@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -14,14 +14,17 @@ class Persons extends Component {
         return state;
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        }
+    //no need here since PureComponent check all props by default instead of manually check like below.
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     if (nextProps.persons !== this.props.persons || 
+    //         nextProps.changed !== this.props.changed || 
+    //         nextProps.clicked !== this.props.clicked) {
+    //         return true;
+    //     }
 
-        return false; 
-    }
+    //     return false; 
+    // }
 
     getSnapshotBeforeUpdate(previousProps, previousState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
