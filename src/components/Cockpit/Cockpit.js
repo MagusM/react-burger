@@ -1,3 +1,4 @@
+import ThenPromise from 'promise';
 import React from 'react';
 
 import classes from './Cockpit.css';
@@ -17,7 +18,7 @@ const cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>
-            <h1>Hi, Im a react app.</h1>
+            <h1>{props.title}</h1>
             <p className={assignClasses.join(' ')}>Hey, I'ts working!</p>
             <button className={btnClass}
               onClick={props.clicked}
