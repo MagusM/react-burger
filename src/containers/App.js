@@ -10,9 +10,9 @@ class App extends Component {
     super(props);
     this.state = {
       persons: [
-        {id: '12adf', name:"Simon", age:"36",  desc: "Father"},
-        {id: '12agg', name:"Talia", age:"28",  desc: "Mother"},
-        {id: '12ahh', name:"Noam",  age:"0.8", desc: "Son"}
+        {id: '12adf', name:"Simon", age:36,  desc: "Father"},
+        {id: '12agg', name:"Talia", age:28,  desc: "Mother"},
+        {id: '12ahh', name:"Noam",  age:0.8, desc: "Son"}
       ],
       showPersons: false,
       showCockpit: true
