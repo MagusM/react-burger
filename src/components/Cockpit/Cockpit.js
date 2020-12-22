@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import AuthContext from '../../context/auth-context';
 
 import classes from './Cockpit.css';
@@ -6,6 +6,7 @@ import classes from './Cockpit.css';
 const cockpit = (props) => {
 
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
 
     //will run on every render and rerender cycle, like componentDidUpdate hook
     //we can have many useEffect hooks
@@ -55,9 +56,7 @@ const cockpit = (props) => {
             >
                 Toggle persons
             </button>
-            <AuthContext.Consumer>
-                {context => <button onClick={context.login}>Login in</button>}
-            </AuthContext.Consumer>
+            {<button onClick={authContext.login}>Login in</button>}
         </div>
     );
 };
