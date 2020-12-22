@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    const toggleBtnRef = useRef(null);
 
     //will run on every render and rerender cycle, like componentDidUpdate hook
     //we can have many useEffect hooks
@@ -14,6 +16,9 @@ const cockpit = (props) => {
         // }, 500);
 
         //this return function is like componentWillUnmount hook, runs after the render cycle.
+
+        toggleBtnRef.current.click();
+
         return () => {
             console.log('[Cockpit.js] cleanup effect called');
         }
@@ -45,6 +50,7 @@ const cockpit = (props) => {
             <p className={assignClasses.join(' ')}>Hey, I'ts working!</p>
             <button className={btnClass}
               onClick={props.clicked}
+              ref={toggleBtnRef}
             >
                 Toggle persons
             </button>
