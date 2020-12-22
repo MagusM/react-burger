@@ -5,6 +5,7 @@ import classes from './Person.css';
 import WithClass from '../../../hoc/WithClass';
 import withClassAsFunction from '../../../hoc/withClassAsFunction';
 import Aux from '../../../hoc/Aux';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
 
@@ -21,6 +22,9 @@ class Person extends Component {
     render() {
         return (
             <WithClass classes={classes.Person}>
+                <AuthContext.Consumer>
+                    {context => context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>}
+                </AuthContext.Consumer>
                 <p onClick={this.props.click}>
                     I'm {this.props.name} and I am {this.props.age} years old!
                 </p>
