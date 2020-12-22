@@ -61,7 +61,11 @@ class App extends Component {
   }
 
   togglePersonsHandler = (event) => {
-    this.setState({showPersons: !this.state.showPersons});
+    this.setState( (previousState, props) => {
+      return {
+        showPersons: !previousState.showPersons
+      }
+    } );
   }
 
   render() {
@@ -84,7 +88,11 @@ class App extends Component {
         <button 
           onClick={
             () => {
-              this.setState({showCockpit: !this.state.showCockpit});
+              this.setState( (previousState, props) => {
+                return {
+                  showPersons: !previousState.showPersons
+                }
+              } );
             }
           }
         >
